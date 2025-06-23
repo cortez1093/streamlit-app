@@ -9,8 +9,6 @@ def load_data():
     df['paint_color'] = df['paint_color'].fillna('Unknown')
     df['cylinders'] = df.groupby('type')['cylinders'].transform(lambda x: x.fillna(x.median()))
     df['model_year'] = df.groupby('model')['model_year'].transform(lambda x: x.fillna(x.median()))
-    df['odometer'] = df.groupby('model_year')['odometer'].transform(lambda x: x.fillna(x.median()))
-    df['odometer'] = df.groupby('type')['odometer'].transform(lambda x: x.fillna(x.median()))
     df.dropna(subset = ['price', 'odometer', 'condition'], inplace = True)
 
     return df
@@ -23,7 +21,7 @@ st.write("Exploring price, mileage, and condition of used vehicles.")
 st.sidebar.header("Filter Listings")
 year_range = st.sidebar.slider('Model year range:', int(df['model_year'].min()), int(df['model_year'].max()), (2010, 2020))
 
-manufacturers = st.sidebar.multiselect('Select manufacturers:', options=sorted(df['manufacturer'].dropna().unique()), default=sorted(df['manufacturer'].dropna().unique()))
+manufacturers = st.sidebar.multiselect('Select Manufacturers:', options = sorted(df['manufacturer'].dropna().unique()), default = sorted(df['manufacturer'].dropna().unique()))
 
 filtered_df = df[(df['model_year'] >= year_range[0]) & (df['model_year'] <= year_range[1]) & (df['manufacturer'].isin(manufacturers))]
 
