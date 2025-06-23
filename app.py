@@ -9,7 +9,6 @@ def load_data():
     df['paint_color'] = df['paint_color'].fillna('Unknown')
     df['cylinders'] = df.groupby('type')['cylinders'].transform(lambda x: x.fillna(x.median()))
     df['model_year'] = df.groupby('model')['model_year'].transform(lambda x: x.fillna(x.median()))
-    df['model_year'] = df.groupby('manufacturer')['model_year'].transform(lambda x: x.fillna(x.median()))
     df['odometer'] = df.groupby('model_year')['odometer'].transform(lambda x: x.fillna(x.median()))
     df['odometer'] = df.groupby('type')['odometer'].transform(lambda x: x.fillna(x.median()))
     df.dropna(subset = ['price', 'odometer', 'condition'], inplace = True)
