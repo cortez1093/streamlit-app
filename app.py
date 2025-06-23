@@ -15,6 +15,7 @@ def load_data():
     df.dropna(subset = ['price', 'odometer', 'condition'], inplace = True)
 
     return df
+df = load_data()
 
 st.header("Used Cars Dashboard")
 st.write("Exploring price, mileage, and condition of used vehicles.")
