@@ -21,9 +21,9 @@ st.write("Exploring price, mileage, and condition of used vehicles.")
 st.sidebar.header("Filter Listings")
 year_range = st.sidebar.slider('Model year range:', int(df['model_year'].min()), int(df['model_year'].max()), (2010, 2020))
 
-manufacturers = st.sidebar.multiselect('Select Manufacturers:', options = sorted(df['manufacturer'].dropna().unique()), default = sorted(df['manufacturer'].dropna().unique()))
+manufacturers = st.sidebar.multiselect('Select Manufacturers:', options = sorted(df['model'].dropna().unique()), default = sorted(df['model'].dropna().unique()))
 
-filtered_df = df[(df['model_year'] >= year_range[0]) & (df['model_year'] <= year_range[1]) & (df['manufacturer'].isin(manufacturers))]
+filtered_df = df[(df['model_year'] >= year_range[0]) & (df['model_year'] <= year_range[1]) & (df['model'].isin(model))]
 
 st.title("Used Vehicle Dashboard")
 st.markdown("Explore listings of used cars in the U.S. with interactive filters and visualizations.")
