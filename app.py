@@ -19,11 +19,9 @@ st.header("Used Cars Dashboard")
 st.write("Exploring price, mileage, and condition of used vehicles.")
 
 st.sidebar.header("Filter Listings")
-year_range = st.sidebar.slider('Model year range:', int(df['model_year'].min()), int(df['model_year'].max()), (2010, 2020))
-
-manufacturers = st.sidebar.multiselect('Select Manufacturers:', options = sorted(df['model'].dropna().unique()), default = sorted(df['model'].dropna().unique()))
-
-filtered_df = df[(df['model_year'] >= year_range[0]) & (df['model_year'] <= year_range[1]) & (df['model'].isin(model))]
+min_year, max_year = int(df['model_year'].min()), int(df['model_year'].max())
+year_range = st.sidebar.slider('Model year range:', min_value = min_year, max_value = max_year, value=(min_year, max_year))
+filtered_df = df[(df['model_year'] >= year_range[0]) & (df['model_year'] <= year_range[1])]
 
 st.title("Used Vehicle Dashboard")
 st.markdown("Explore listings of used cars in the U.S. with interactive filters and visualizations.")
@@ -34,7 +32,7 @@ hist.update_layout(title_text="Odometer Distribution")
 st.plotly_chart(hist)
 
 st.subheader("Price vs. Odometer")
-scatter = px.scatter(filtered_df, x='odometer', y='price', color='condition', hover_data=['model_year', 'model', 'type'])
+scatter = px.scatter(filtered_df, x='odometer', y='price', color='condition', hover_data=['model_year', 'model'])
 scatter.update_layout(title_text="Price vs. Odometer by Vehicle Condition")
 st.plotly_chart(scatter)
 
