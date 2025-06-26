@@ -36,7 +36,3 @@ scatter = px.scatter(filtered_df, x='odometer', y='price', color='condition', ho
 scatter.update_layout(title_text="Price vs. Odometer by Vehicle Condition")
 st.plotly_chart(scatter)
 
-if st.checkbox("Show Raw Data"):
-    st.subheader("Raw Data")
-    st.write(filtered_df)
-
