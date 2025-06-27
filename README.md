@@ -21,4 +21,4 @@ The dataset used is `vehicles_us.csv`, which contains information about used car
 - Run app: streamlit run app.py
 
 You can view deployed version of this project at:
-https://streamlit-app-1-9voi.onrender.com/
+https://streamlit-app-2-ecjt.onrender.com/
