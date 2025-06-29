@@ -23,5 +23,5 @@ The dataset used is `vehicles_us.csv`, which contains information about used car
 You can view deployed version of this project at:
 https://streamlit-app-2-ecjt.onrender.com/
 
-
+# Notes for reviewer
 Yes I have made the suggested changes by the previous reviewer to app.py file. I noted the previous reviewers suggestions next to the code to show exactly where I made the changes.
